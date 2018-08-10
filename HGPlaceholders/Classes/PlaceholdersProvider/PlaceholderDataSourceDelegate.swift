@@ -83,6 +83,8 @@ class PlaceholderDataSourceDelegate: NSObject {
         } else {
             height -= (scrollView.contentInset.top + scrollView.contentInset.bottom)
         }
+       
+        // height -= 100
         return height
     }
     
@@ -150,6 +152,13 @@ extension PlaceholderDataSourceDelegate: UITableViewDelegate {
         // subtract tableFooterView Height out of height
         if style?.shouldShowTableViewFooter != true {
             tableViewHeight -= tableView.tableFooterView?.bounds.height ?? 0
+        }
+        
+        if placeholder.data?.title == "It's lonely in here!" {
+            tableViewHeight -= 170
+        }
+        else {
+            tableViewHeight -= 70
         }
         
         return tableViewHeight

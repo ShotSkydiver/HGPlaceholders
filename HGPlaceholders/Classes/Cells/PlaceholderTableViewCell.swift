@@ -31,6 +31,17 @@ open class PlaceholderTableViewCell: UITableViewCell {
         onActionButtonTap?()
         print("Placeholder action button tapped")
     }
+    
+    func disableActionButton(disable: Bool) {
+        if disable {
+            actionButton!.backgroundColor = UIColor(red:0.46, green:0.51, blue:0.55, alpha:0.3)
+            actionButton!.isUserInteractionEnabled = false
+        }
+        else {
+            actionButton!.backgroundColor = UIColor(red:0.18, green:0.49, blue:0.82, alpha:1.0)
+            actionButton!.isUserInteractionEnabled = true
+        }
+    }
 }
 
 extension PlaceholderTableViewCell: NibLoadable {}

@@ -94,16 +94,6 @@ open class TableView: UITableView {
     }
     
     /**
-     * Keeps user seperatorStyle instead of overriding with system default
-     * The default value is UITableViewCellSeparatorStyle.singleLine
-     */
-    open override var separatorStyle: UITableViewCellSeparatorStyle {
-        didSet {
-            defaultSeparatorStyle = separatorStyle
-        }
-    }
-    
-    /**
      * A Boolean value that determines whether bouncing always occurs when the placeholder is shown.
      * The default value is false
      */
@@ -194,7 +184,7 @@ open class TableView: UITableView {
         
         if let placeholderDataSource = theDataSource as? PlaceholderDataSourceDelegate {
             // placeholder configuration
-            super.separatorStyle = .none
+            separatorStyle = .none
             alwaysBounceVertical = placeholdersAlwaysBounceVertical
             let style = placeholderDataSource.placeholder.style
             if style?.shouldShowTableViewHeader != true { // style = nil or shouldShowTableViewHeader == false
@@ -218,7 +208,7 @@ open class TableView: UITableView {
     }
     
     /// The total number of rows in all sections of the tableView
-    private func numberOfRowsInAllSections() -> Int {
+    public func numberOfRowsInAllSections() -> Int {
         let numberOfSections = defaultDataSource?.numberOfSections?(in: self) ?? 1
         var rows = 0
         for i in 0 ..< numberOfSections {
